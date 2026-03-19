@@ -43,7 +43,7 @@ A robust and efficient REST API for managing invoices and customers, built with 
 npm run start:dev
 ```
 
-The API will be available at `http://localhost:3000`.
+The API will be available at `http://localhost:5000`.
 
 > [!IMPORTANT]
 > **Mobile Connectivity**: The server is configured in `main.ts` to listen on `0.0.0.0`. This allows your Flutter mobile application to connect to the backend over your local network using your machine's IP address.
