@@ -1,40 +1,37 @@
-# Invoice App Backend (NestJS)
+# InvoiceFlow - Backend (NestJS) 🚀
 
-A robust and efficient REST API for managing invoices and customers, built with NestJS. This project serves as the backend for the Invoice Management System.
+A robust and efficient REST API for managing invoices and customers, built with **NestJS**. This project serves as the central data hub for both the **InvoiceFlow Web** and **InvoiceFlow Mobile** applications.
 
-## 🚀 Features
+## ✨ Features
 
-- **Full CRUD for Customers**: Create, Read, Update, and Delete customers.
-- **Full CRUD for Invoices**: Create, Read, Update, and Delete invoices.
-- **Advanced Invoice Relations**: Invoices are enriched with customer data.
-- **Data Persistence**: Uses an optimized in-memory data structure for speed and simplicity.
-- **Global Error Handling**: Integrated validation pipes and standard error responses.
-- **CORS Support**: Configured for seamless integration with Next.js and Flutter frontends.
+- **Full CRUD for Customers**: Endpoint-driven management for client profiles.
+- **Full CRUD for Invoices**: Linked entity management with customer-side relations.
+- **Enriched Relations**: Single-trip data fetching where invoices are automatically matched with customer metadata.
+- **Optimized Performance**: Uses in-memory data structures for rapid response times.
+- **Mobile-Ready Configuration**: Pre-configured to listen on all network interfaces (`0.0.0.0`) for seamless mobile connectivity on local networks.
+- **CORS Enabled**: Ready for cross-origin requests from Next.js and Flutter.
 
 ## 🛠️ Technology Stack
 
 - **Framework**: [NestJS](https://nestjs.com/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Package Manager**: [NPM](https://www.npmjs.com/)
-
----
+- **Environment**: Node.js v18+
 
 ## 💻 Getting Started
 
 ### Prerequisites
-
-- Node.js (v18 or higher recommended)
+- Node.js (v18 or higher)
 - npm (v9 or higher)
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the repository**:
    ```bash
-   git clone <repository-link>
+   git clone https://github.com/Success1050/invoice-backend.git
    cd invoice-app-backend
    ```
 
-2. Install dependencies:
+2. **Install dependencies**:
    ```bash
    npm install
    ```
@@ -44,65 +41,32 @@ A robust and efficient REST API for managing invoices and customers, built with 
 ```bash
 # Development mode
 npm run start:dev
-
-# Production mode
-npm run build
-npm run start:prod
 ```
 
 The API will be available at `http://localhost:3000`.
 
----
+> [!IMPORTANT]
+> **Mobile Connectivity**: The server is configured in `main.ts` to listen on `0.0.0.0`. This allows your Flutter mobile application to connect to the backend over your local network using your machine's IP address.
 
-## 📑 API Documentation
+## 📑 API Endpoints
 
 ### 👥 Customers (`/customers`)
-
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| **GET** | `/customers` | Fetch all customers |
-| **GET** | `/customers/:id` | Fetch a single customer by ID |
-| **POST** | `/customers` | Create a new customer |
-| **PUT** | `/customers/:id` | Update an existing customer |
-| **DELETE** | `/customers/:id` | Remove a customer |
-
-**Request Body Example (POST/PUT):**
-```json
-{
-  "name": "Emmanuel Eze",
-  "email": "emmanuel@example.com",
-  "phone": "09011122233"
-}
-```
+- `GET /customers`: Fetch all customers.
+- `GET /customers/:id`: Fetch single customer.
+- `POST /customers`: Create customer.
+- `PUT /customers/:id`: Update customer.
+- `DELETE /customers/:id`: Remove customer.
 
 ### 📄 Invoices (`/invoices`)
+- `GET /invoices`: Fetch all invoices.
+- `GET /invoices/:id`: Fetch single invoice.
+- `POST /invoices`: Create invoice.
+- `PUT /invoices/:id`: Update invoice.
+- `DELETE /invoices/:id`: Remove invoice.
 
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| **GET** | `/invoices` | Fetch all invoices (enriched with customer info) |
-| **GET** | `/invoices/:id` | Fetch a single invoice by ID |
-| **POST** | `/invoices` | Create a new invoice |
-| **PUT** | `/invoices/:id` | Update an existing invoice |
-| **DELETE** | `/invoices/:id` | Remove an invoice |
-
-**Request Body Example (POST/PUT):**
-```json
-{
-  "customerId": 1,
-  "amount": 1500,
-  "status": "pending",
-  "description": "Project Development Fee"
-}
-```
+## 🔗 Related Repositories
+- **Web Frontend (Next.js)**: [invoice-frontend](https://github.com/Success1050/invoice-frontend)
+- **Mobile App (Flutter)**: [invoice-mobile](https://github.com/Success1050/invoice-mobile)
 
 ---
-
-## 🔧 Project Structure
-
-- `src/customers`: Logic for managing customer data.
-- `src/invoices`: Logic for managing invoices and linking to customers.
-- `src/main.ts`: Application entry point with global configurations.
-
-## 📄 License
-
-This project is licensed under the MIT License.
+*Developed by Emmanuel Success as part of the Full-Stack Developer Assessment.*
