@@ -1,7 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject, forwardRef } from '@nestjs/common';
+import { InvoicesService } from '../invoices/invoices.service';
 
 @Injectable()
 export class CustomersService {
+  constructor(
+    @Inject(forwardRef(() => InvoicesService))
+    private readonly invoicesService: InvoicesService,
+  ) {}
+
   private customers = [
     { id: 1, name: 'John Doe', email: 'john@gmail.com', phone: '08123456789', createdAt: new Date('2025-01-01') },
     { id: 2, name: 'Jane Smith', email: 'jane@gmail.com', phone: '07098765432', createdAt: new Date('2025-02-01') },
@@ -37,6 +43,7 @@ export class CustomersService {
 
   remove(id: number) {
     this.customers = this.customers.filter((c) => c.id !== id);
-    return { message: 'Customer deleted successfully' };
+    this.invoicesService.removeByCustomerId(id);
+    return { message: 'Customer and related invoices deleted successfully' };
   }
 }
